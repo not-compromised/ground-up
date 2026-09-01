@@ -59,10 +59,10 @@ verdict `over` (agent wrote it), so these are flagged to revisit; each maps to a
 study-plan chunk. 🔵 = seen in a PR, never taught.
 | Concept | Status | Hook |
 |---|---|---|
-| Host collectors (file-as-interface, "didn't run" vs "empty") | 🔵 open | A root timer writes data/*.json; the read-only app only reads it. Must distinguish no-findings from didn't-run. ground-up chunk 8. [revisit:0830] |
-| FastAPI read-only request path | 🔵 open | route → `Depends(require_auth)` → read a file → return JSON. ground-up chunk 4. [revisit:0830] |
+| Host collectors (file-as-interface, "didn't run" vs "empty") | 🔵 open | A root timer writes data/*.json; the read-only app only reads it. Must distinguish no-findings from didn't-run. ground-up chunk 8. [revisit:0830] [revisit:0901] |
+| FastAPI read-only request path | 🔵 open | route → `Depends(require_auth)` → read a file → return JSON. ground-up chunk 4. [revisit:0830] [revisit:0901] |
 | The action broker (app→host privileged path) | 🔵 open | App has no sudo; a separate host process runs a fixed command list. ground-up chunk 5. [revisit:0830] |
-| admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] |
+| admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] [revisit:0901] |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
