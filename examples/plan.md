@@ -1,7 +1,8 @@
-# plans/<project>.md — study plan template
+# examples/plan.md — what a study plan looks like
 
-A repo's study plan. Its existence turns the learning gates on for that repo; the
-`ground-up` skill writes and maintains it. Copy this shape:
+A repo's study plan lives at `plans/<project>.md` in your ledger. Its existence turns
+the learning gates on for that repo; the `ground-up` skill writes and maintains it.
+The shape:
 
 ```markdown
 # <project> — study plan

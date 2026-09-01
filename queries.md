@@ -61,9 +61,12 @@ exists to surface — say it out loud when it trips.
 
 ```bash
 skips=$(grep -o '\[skip:' learning-log.md | wc -l)
-chunks=$(grep -c '^- \[ \]' plan.md)
+chunks=$(grep -c '^- \[ \]' plans/<repo>.md)
 [ "$skips" -gt "$chunks" ] && echo "DRIFT: $skips skips vs $chunks open chunks"
 ```
+
+(Point the second grep at wherever the repo's study plan actually lives, if yours
+are not in `plans/`.)
 
 ## Rules that keep the counts honest
 

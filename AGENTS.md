@@ -2,7 +2,7 @@
 
 Agent context for this ledger repo. The human here is closing the gap between
 directing AI to build software and reading/owning code unaided; their own repos are
-the course material. [README.md](README.md) is the human-facing map; this file is the
+the course material. [SYSTEM.md](SYSTEM.md) is the full map; this file is the
 grammar an agent needs loaded while working the system.
 
 **Rule zero: only unaided answers are evidence.** Assisted performance inflates what a
@@ -47,8 +47,7 @@ prescribed per stuck concept, never walked linearly.
 | [learning-log.md](learning-log.md) | The evidence ledger, all repos — single source of learning state |
 | [syllabus.md](syllabus.md) | Concept frontier per track; read when judging distance from the frontier |
 | [queries.md](queries.md) | Counting recipes for the tags — read it rather than composing greps |
-| [evening-path.md](evening-path.md) | Zero-decision on-ramp for tired evenings |
-| `plans/<project>.md` | A repo's study plan: layer map, chunk checklist, position. Its existence turns the gates on for that repo |
+| `plans/<project>.md` | A repo's study plan: layer map, chunk checklist, position. Its existence turns the gates on for that repo (format: `examples/plan.md`) |
 | `inbox/` (gitignored) | Captured confusion, one file per item — questions pending teaching, never completed concepts |
 
 ## Working in a governed repo

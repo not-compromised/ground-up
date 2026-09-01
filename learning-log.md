@@ -14,13 +14,12 @@ the count is `grep -c`, so it cannot drift or double-increment. Never contains a
 - `[revisit:MMDD]` — agent wrote it; flagged to come back
 
 Three tags on one row → that concept has earned a consolidation session; queue it in
-the repo's `ground-up.md`. Counting recipes: [queries.md](queries.md).
+the repo's study plan. Counting recipes: [queries.md](queries.md).
 
 Session detail and anything job-search-flavored is private and lives outside this repo.
 
 _Last updated: 2026-07-14_
 
-**After work:** use [evening-path.md](evening-path.md) — don't browse this whole log to decide.
 
 ## Code (JS/TS — own repos)
 | Concept | Status | Hook |
@@ -57,7 +56,7 @@ _Last updated: 2026-07-14_
 ## Dashboard backend (Python / FastAPI / ops) — encountered, not yet studied
 Frontier concepts touched by shipped changes ahead of studying them. Gate A
 verdict `over` (agent wrote it), so these are flagged to revisit; each maps to a
-`ground-up.md` chunk. 🔵 = seen in a PR, never taught.
+study-plan chunk. 🔵 = seen in a PR, never taught.
 | Concept | Status | Hook |
 |---|---|---|
 | Host collectors (file-as-interface, "didn't run" vs "empty") | 🔵 open | A root timer writes data/*.json; the read-only app only reads it. Must distinguish no-findings from didn't-run. ground-up chunk 8. [revisit:0830] |
@@ -66,5 +65,5 @@ verdict `over` (agent wrote it), so these are flagged to revisit; each maps to a
 | admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] |
 
 ## Not yet started (queue)
-CLI drills (daily reps — none logged yet) · Odin Foundations (not started —
-**evening-path Track A**; start immediately)
+CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
+start immediately)

@@ -23,8 +23,8 @@ ledger's path), where future teaching sessions pick it up.
    - **What was happening:** one or two sentences on the task underway, and what the
      confusion blocked.
    - **Related ledger rows:** matching 🔶/🔵 concepts in the learning log, if any.
-   - *(optional)* Suggested resolution: session type (code-coach / drill / tired-night
-     track) or the external lesson that covers it.
+   - *(optional)* Suggested resolution: session type (code-coach / drill) or the
+     external lesson that covers it.
    A bare restatement of the user's sentence is a failed capture — the surrounding
    context is the whole reason to write the file now instead of later.
 3. **Write one file:** `inbox/YYYY-MM-DD-<slug>.md` (absolute date from `date +%F`,
