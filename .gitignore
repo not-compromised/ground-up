@@ -1,0 +1,10 @@
+# Local agent context; not shipped
+/CLAUDE.md
+
+.env
+*.local
+.DS_Store
+
+# Inbox captures quote private code verbatim; this repo is PUBLIC.
+# Captures stay local-only and die when folded into the ledger.
+/inbox/
