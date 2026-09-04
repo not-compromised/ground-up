@@ -45,7 +45,7 @@ _Last updated: 2026-07-14_
 | Windows net toolbelt (`ipconfig /release` `/renew` `/flushdns`, ping, nslookup, tracert) | 🔶 refresh | ~8 commands total, flags are English verbs of the story; typed release→renew unaided 2026-07-08 after one miss (said "ifconfig") |
 | DNS cache / `ipconfig /flushdns` | 🔶 refresh | 2026-07-08: understood cached lookups get cleared; avoid calling it routing |
 | 8.8.8.8 = Google · 1.1.1.1 = Cloudflare | 🔶 refresh | Got them backwards once — re-test |
-| My own cert chain (TLS for my own domain: who issues the cert and which process serves it) | 🔶 refresh | Must know my own claims cold — stumbled once explaining it |
+| My own cert chain | 🔶 refresh | Who issues the cert for my domain and which process serves it. Must know my own claims cold. |
 | Public hostname vs home IP | 🔶 refresh | The name people type is not the machine's home address |
 
 ## Web landscape (concepts, not tools yet)

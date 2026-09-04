@@ -12,14 +12,15 @@ governed repo — one whose study plan exists).
 
 The ledger repo holds all evidence and defines the grammar (statuses, grades, tags,
 escalation) in its `AGENTS.md` — read that first if it isn't already loaded. Your
-global agent context names the ledger's path; study plans live in the ledger's
-`plans/<project>.md`, one per governed repo. **Rule zero: only unaided answers are
-evidence** — the user answers first, the agent corrects after.
+global agent context names the ledger's path. A repo is governed when it has a
+`plan.md` at its root (written here, gitignored, never committed — it names files
+and hazards). **Rule zero: only unaided answers are evidence** — the user answers
+first, the agent corrects after.
 
 ## Everyday gates (any session in a governed repo)
 
-1. **Session start:** read the repo's study plan. Defer the learning log — deferred on
-   purpose, so the user's level cannot sway design.
+1. **Session start:** read `plan.md` in this repo. Defer the learning log — deferred
+   on purpose, so the user's level cannot sway design.
 2. **Design freezes first.** Work out the best solution to the ask, full stop. The
    design never bends for teaching; if the best answer is beyond the user, that is
    what gates are for.
@@ -39,21 +40,29 @@ evidence** — the user answers first, the agent corrects after.
    Every stop is skippable — a skip becomes a tag, never a failure. Name the concept
    before offering the skip, so the tag has a row to land on. Same for `over` — the
    `revisit after <topics>` topics ARE concept rows, and each gets a `[revisit:...]`.
-5. **Bookkeeping:** graded answers → the learning log; position → the study plan.
+5. **Bookkeeping:** graded answers → the learning log; position → `plan.md`.
    A concept at the escalation line (grammar: three tags, or partial/gap twice) →
-   queue its consolidation lesson in the study plan.
+   queue its consolidation lesson in `plan.md`.
 
 ## Study sessions ("ground-up" in a repo)
 
-**START** (no study plan yet): read the project's contribution rules (how changes are
+**START** (no `plan.md` yet): read the project's contribution rules (how changes are
 proven and shipped there). Survey the codebase — layers, worst files, comment noise.
-Read the user's current state (log + syllabus). Then write `plans/<project>.md`: the
-app's layer map ordered pedagogically from the user's frontier (small pure functions →
-one module → data model → request path → architecture), a chunk checklist (a chunk =
-one reviewable PR, ~5–15 files or one subsystem), and per-chunk notes where proving
-commands are missing. File one tracking issue in the repo linking the plan.
+Read the user's current state (log + syllabus). Then:
 
-**CONTINUE:** read the study plan, reconcile with reality (merged PRs, `git log`),
+1. Write `plan.md` at this repo's root (format: the ledger's `examples/plan.md`):
+   layer map ordered pedagogically from the user's frontier (small pure functions →
+   one module → data model → request path → architecture), a chunk checklist (a
+   chunk = one reviewable PR, ~5–15 files or one subsystem), and per-chunk notes
+   where proving commands are missing. Done when the file is on disk with that
+   shape.
+2. Ignore it: if `.gitignore` has no `/plan.md` line, append one; if `.gitignore`
+   does not exist, create it containing `/plan.md`. Done when
+   `git check-ignore -q plan.md` succeeds. Stage `.gitignore` with the setup
+   change; never stage `plan.md`.
+3. File one tracking issue in the repo linking the plan.
+
+**CONTINUE:** read `plan.md`, reconcile with reality (merged PRs, `git log`),
 state the next chunk in one line, work it. Study sessions open by draining relevant
 `inbox/` items and `revisit` tags, and by re-testing 🔶/🔵 concepts the chunk touches.
 

@@ -36,8 +36,8 @@ The whole system ships here, generalized so it isn't wired to my machines:
 3. **Point your agent at it**: [AGENTS.md](AGENTS.md) is the grammar agents load; add
    one line to your global agent context naming your ledger's path.
 4. **Say "ground-up"** in the repo you most want to be able to read. The agent surveys
-   it, writes a study plan, and from then on everyday work there runs the learning
-   gates.
+   it, writes a gitignored `plan.md` there, and from then on everyday work in that
+   repo runs the learning gates.
 
 How every part fits together — the gates, the tags, the ceremony — is in
 [SYSTEM.md](SYSTEM.md).

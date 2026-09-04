@@ -55,18 +55,17 @@ grep -E '\[(skip|revisit):' learning-log.md \
 
 ## Drift check
 
-If skips outnumber the open chunks in the repo's `ground-up.md`, the gates are being
-declined faster than the work is being done. That is the single signal this counter
-exists to surface — say it out loud when it trips.
+If skips outnumber the open chunks in the governed repo's `plan.md`, the gates are
+being declined faster than the work is being done. That is the single signal this
+counter exists to surface — say it out loud when it trips.
 
 ```bash
+# skips: run from the ledger repo
 skips=$(grep -o '\[skip:' learning-log.md | wc -l)
-chunks=$(grep -c '^- \[ \]' plans/<repo>.md)
+# chunks: run from the governed repo (plan.md is gitignored there)
+chunks=$(grep -c '^- \[ \]' plan.md)
 [ "$skips" -gt "$chunks" ] && echo "DRIFT: $skips skips vs $chunks open chunks"
 ```
-
-(Point the second grep at wherever the repo's study plan actually lives, if yours
-are not in `plans/`.)
 
 ## Rules that keep the counts honest
 

@@ -1,8 +1,8 @@
 # examples/plan.md — what a study plan looks like
 
-A repo's study plan lives at `plans/<project>.md` in your ledger. Its existence turns
-the learning gates on for that repo; the `ground-up` skill writes and maintains it.
-The shape:
+A repo's study plan lives at `plan.md` in that repo's root, gitignored. Its
+existence turns the learning gates on; the `ground-up` skill writes the file and
+adds `/plan.md` to `.gitignore`. Never commit it. The shape:
 
 ```markdown
 # <project> — study plan

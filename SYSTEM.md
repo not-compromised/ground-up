@@ -2,8 +2,9 @@
 
 Every part of the ground-up learning system in one place, for the user's head and for
 agents. ([README.md](README.md) is the human landing page; this is the map behind it.)
-This repo is the **home** of the system: the evidence ledger, the per-repo study plans
-(`plans/`), the agent grammar (`AGENTS.md`), and the skills that run it (`skills/`).
+This repo is the **home** of the system: the evidence ledger, the agent grammar
+(`AGENTS.md`), and the skills that run it (`skills/`). Each governed app keeps its
+own `plan.md` at repo root, gitignored.
 
 **The goal:** close the gap between directing AI to build software and reading/owning
 code unaided. The user's own production repos are the course material. **Rule zero:
@@ -43,8 +44,8 @@ code verbatim. When in doubt, it goes to the private side.
                  ^
                  |
         study session ("ground-up")
-        works chunks from the repo's
-        plans/<project>.md, drains
+        works chunks from that
+        repo's plan.md, drains
         inbox/, re-tests 🔶/🔵
 ```
 
@@ -57,7 +58,7 @@ code verbatim. When in doubt, it goes to the private side.
 | `queries.md` | this repo | **Counting recipes** for the ledger tags: session-open line, escalation (3 tags = earned a session), drift check (skips > open chunks). |
 | `inbox/` | this checkout, **gitignored** | **Captured confusion**, one file per item, dropped mid-session by the `learning-inbox` skill. Questions only, never completed concepts; drained by study sessions, deleted when folded. Local-only: captures quote private code, so they never enter this public repo's history. |
 | `AGENTS.md` | this repo | **The agent-facing grammar**: rule zero, statuses/grades/tags, the gates in short form. Point any agent here. |
-| study plans | `plans/<project>.md` | A repo's **study plan**: layer map, chunk checklist, current position. Its existence turns the gates on for that repo. |
+| study plan | `plan.md` in the governed repo, **gitignored** | Layer map, chunk checklist, current position. Its existence turns the gates on. Format: `examples/plan.md`. |
 | `examples/` | this repo | Fabricated ledger, syllabus, and plan showing the formats — the starting point for adopters. The real working docs are the repo-root files. |
 | `ground-up` skill | `skills/ground-up/` | **The engine.** Everyday gates A/B, study-session mechanics. |
 | `learning-inbox` skill | `skills/learning-inbox/` | Capture-only writer for `inbox/`. Never teaches, never touches the ledger. |
@@ -99,7 +100,9 @@ code verbatim. When in doubt, it goes to the private side.
   else in the diff = normal ceremony — and because the repo is public, every commit
   is also a publication: nothing job-search, workplace, private-infra, or
   private-code flavored, ever.
-- **Per-repo study plans** live in `plans/<project>.md` (format: `examples/plan.md`).
+- **Per-repo study plans** live at `plan.md` in the repo being studied, gitignored
+  (format: `examples/plan.md`). The skill writes the file and the `/plan.md`
+  gitignore line; the plan is never committed.
 - **No rendered surface.** Earlier HTML mirrors (a dashboard Learn tab, a reference
   page) are retired — mirrors went stale; this README and the ledger are the only
   sources of truth.
