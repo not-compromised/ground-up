@@ -69,6 +69,7 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | Cross-origin fetch + CORS allowlist | 🔵 open | The browser blocks a response unless the OTHER server's `access-control-allow-origin` names this page's origin; nothing on the calling side can grant it. tokdash drop-in for the dashboard Limits panel. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 | Grid/flex `min-width:auto` (content widens a 1fr track) | 🔵 open | An item is never narrower than its content by default, so one unwrappable string grew a column; `min-width:0` opts out. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 | Function contracts (`ago()` wanted a timestamp) | 🔵 open | Handed a duration instead → "20701d ago". Read the parameter's meaning from the signature, don't guess. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
+| Conditionals / if-chain ordering (first match returns) | 🔵 open | `if (pct > 90) … if (pct > 67) …` — order decides; swapped, 95% would read amber. meterClass, PR dashboard#115. Stop declined mid-ship (question landed badly). Odin JS item 2. [skip:0905] |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
