@@ -63,6 +63,9 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | FastAPI read-only request path | 🔵 open | route → `Depends(require_auth)` → read a file → return JSON. ground-up chunk 4. [revisit:0830] [revisit:0901] |
 | The action broker (app→host privileged path) | 🔵 open | App has no sudo; a separate host process runs a fixed command list. ground-up chunk 5. [revisit:0830] |
 | admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] [revisit:0901] |
+| DOM keyboard events (keydown listener + key lookup table) | 🔵 open | One `document.addEventListener('keydown')` catches every keypress after it bubbles; a `{key: view}` table maps it. Odin JS item 6; ground-up chunk 11. PR dashboard#113. [revisit:0904] |
+| event.target guards (don't fire while typing) | 🔵 open | The event says where the keystroke landed; if it's an input/textarea, the binding stands down. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
+| `element.click()` reuses the real click path | 🔵 open | Synthetic click fires the same handlers/target=_blank as a mouse click — why key 1–9 inherits each Priority link's settings free. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
