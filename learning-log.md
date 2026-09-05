@@ -70,6 +70,8 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | Grid/flex `min-width:auto` (content widens a 1fr track) | 🔵 open | An item is never narrower than its content by default, so one unwrappable string grew a column; `min-width:0` opts out. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 | Function contracts (`ago()` wanted a timestamp) | 🔵 open | Handed a duration instead → "20701d ago". Read the parameter's meaning from the signature, don't guess. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 | Conditionals / if-chain ordering (first match returns) | 🔵 open | `if (pct > 90) … if (pct > 67) …` — order decides; swapped, 95% would read amber. meterClass, PR dashboard#115. Stop declined mid-ship (question landed badly). Odin JS item 2. [skip:0905] |
+| Explicit routes only (nothing implicit) | 🔶 gap | Predicted /favicon.ico would redirect to /favicon.svg after the merge; nothing routes it, so it still 404s — the page's link tag is what stops the browser probing. A FastAPI app answers only the paths it declares. ground-up chunk 2. PR dashboard#117 (0905). |
+| Test reads a repo file from disk (check order) | ✅ solid | Predicted pytest fails first if favicon.svg is deleted: the intent test compares served bytes with Path('favicon.svg') and runs before docker build. PR dashboard#117 (0905). |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
