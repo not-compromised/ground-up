@@ -66,6 +66,9 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | DOM keyboard events (keydown listener + key lookup table) | 🔵 open | One `document.addEventListener('keydown')` catches every keypress after it bubbles; a `{key: view}` table maps it. Odin JS item 6; ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 | event.target guards (don't fire while typing) | 🔵 open | The event says where the keystroke landed; if it's an input/textarea, the binding stands down. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 | `element.click()` reuses the real click path | 🔵 open | Synthetic click fires the same handlers/target=_blank as a mouse click — why key 1–9 inherits each Priority link's settings free. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
+| Cross-origin fetch + CORS allowlist | 🔵 open | The browser blocks a response unless the OTHER server's `access-control-allow-origin` names this page's origin; nothing on the calling side can grant it. tokdash drop-in for the dashboard Limits panel. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
+| Grid/flex `min-width:auto` (content widens a 1fr track) | 🔵 open | An item is never narrower than its content by default, so one unwrappable string grew a column; `min-width:0` opts out. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
+| Function contracts (`ago()` wanted a timestamp) | 🔵 open | Handed a duration instead → "20701d ago". Read the parameter's meaning from the signature, don't guess. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
