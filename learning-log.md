@@ -72,6 +72,8 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | Conditionals / if-chain ordering (first match returns) | 🔵 open | `if (pct > 90) … if (pct > 67) …` — order decides; swapped, 95% would read amber. meterClass, PR dashboard#115. Stop declined mid-ship (question landed badly). Odin JS item 2. [skip:0905] |
 | Explicit routes only (nothing implicit) | 🔶 gap | Predicted /favicon.ico would redirect to /favicon.svg after the merge; nothing routes it, so it still 404s — the page's link tag is what stops the browser probing. A FastAPI app answers only the paths it declares. ground-up chunk 2. PR dashboard#117 (0905). |
 | Test reads a repo file from disk (check order) | ✅ solid | Predicted pytest fails first if favicon.svg is deleted: the intent test compares served bytes with Path('favicon.svg') and runs before docker build. PR dashboard#117 (0905). |
+| URL resolution (absolute path vs the linking file's folder) | 🔵 open | The manifest sits under /assets/ but its start_url "/" is absolute, so the installed app opens the site root, not the assets folder. PR dashboard#119. [skip:0905] |
+| Committed artifact vs build-time rendering | 🔵 open | icon-192/512.png are committed files rendered by hand from favicon.svg; a redrawn SVG changes the tab icon but not the installed app's icon until someone re-renders. The 'who's holding an old copy' through-line. PR dashboard#119. [skip:0905] |
 
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
