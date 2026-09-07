@@ -75,6 +75,9 @@ study-plan chunk. 🔵 = seen in a PR, never taught.
 | URL resolution (absolute path vs the linking file's folder) | 🔵 open | The manifest sits under /assets/ but its start_url "/" is absolute, so the installed app opens the site root, not the assets folder. PR dashboard#119. [skip:0905] |
 | Committed artifact vs build-time rendering | 🔵 open | icon-192/512.png are committed files rendered by hand from favicon.svg; a redrawn SVG changes the tab icon but not the installed app's icon until someone re-renders. The 'who's holding an old copy' through-line. PR dashboard#119. [skip:0905] |
 
+| Responsive graph layout | 🔵 open | Keep labels readable while fitting column gaps to available width; observe width changes to lay out again. [revisit:0906] |
+| Directional graph traversal | 🔵 open | Follow edges in one direction; keep a visited set to represent shared nodes and cycles as links. [revisit:0906] |
+
 ## Not yet started (queue)
 CLI drills (daily reps — none logged yet) · Odin Foundations (not started;
 start immediately)
