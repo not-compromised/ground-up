@@ -59,21 +59,23 @@ verdict `over` (agent wrote it), so these are flagged to revisit; each maps to a
 study-plan chunk. 🔵 = seen in a PR, never taught.
 | Concept | Status | Hook |
 |---|---|---|
-| Host collectors (file-as-interface, "didn't run" vs "empty") | 🔵 open | A root timer writes data/*.json; the read-only app only reads it. Must distinguish no-findings from didn't-run. ground-up chunk 8. [revisit:0830] [revisit:0901] [revisit:0906] |
-| FastAPI read-only request path | 🔵 open | route → `Depends(require_auth)` → read a file → return JSON. ground-up chunk 4. [revisit:0830] [revisit:0901] [revisit:0906] |
+| Host collectors (file-as-interface, "didn't run" vs "empty") | 🔵 open | A root timer writes data/*.json; the read-only app only reads it. Must distinguish no-findings from didn't-run. ground-up chunk 8. [revisit:0830] [revisit:0901] [revisit:0906] [revisit:0919] |
+| FastAPI read-only request path | 🔵 open | route → `Depends(require_auth)` → read a file → return JSON. ground-up chunk 4. [revisit:0830] [revisit:0901] [revisit:0906] [revisit:0919] |
 | The action broker (app→host privileged path) | 🔵 open | App has no sudo; a separate host process runs a fixed command list. ground-up chunk 5. [revisit:0830] |
-| admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] [revisit:0901] [revisit:0906] [skip:0911] |
+| admin-v3 view wiring (showView / load / render) | 🔵 open | nav `data-view` → showView → per-view loader → render from the endpoint. ground-up chunk 11. [revisit:0830] [revisit:0901] [revisit:0906] [skip:0911] [revisit:0919] |
 | DOM keyboard events (keydown listener + key lookup table) | 🔵 open | One `document.addEventListener('keydown')` catches every keypress after it bubbles; a `{key: view}` table maps it. Odin JS item 6; ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 | event.target guards (don't fire while typing) | 🔵 open | The event says where the keystroke landed; if it's an input/textarea, the binding stands down. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 | `element.click()` reuses the real click path | 🔵 open | Synthetic click fires the same handlers/target=_blank as a mouse click — why key 1–9 inherits each Priority link's settings free. ground-up chunk 11. PR dashboard#113. [revisit:0904] |
 | Cross-origin fetch + CORS allowlist | 🔵 open | The browser blocks a response unless the OTHER server's `access-control-allow-origin` names this page's origin; nothing on the calling side can grant it. tokdash drop-in for the dashboard Limits panel. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
 | Grid/flex `min-width:auto` (content widens a 1fr track) | 🔵 open | An item is never narrower than its content by default, so one unwrappable string grew a column; `min-width:0` opts out. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
-| Function contracts (`ago()` wanted a timestamp) | 🔵 open | Handed a duration instead → "20701d ago". Read the parameter's meaning from the signature, don't guess. ground-up chunk 11. PR dashboard#114. [revisit:0905] |
+| Function contracts (`ago()` wanted a timestamp) | 🔵 open | Handed a duration instead → "20701d ago". Read the parameter's meaning from the signature, don't guess. ground-up chunk 11. PR dashboard#114. [revisit:0905] [revisit:0919] |
 | Conditionals / if-chain ordering (first match returns) | 🔵 open | `if (pct > 90) … if (pct > 67) …` — order decides; swapped, 95% would read amber. meterClass, PR dashboard#115. Stop declined mid-ship (question landed badly). Odin JS item 2. [skip:0905] |
 | Explicit routes only (nothing implicit) | 🔶 gap | Predicted /favicon.ico would redirect to /favicon.svg after the merge; nothing routes it, so it still 404s — the page's link tag is what stops the browser probing. A FastAPI app answers only the paths it declares. ground-up chunk 2. PR dashboard#117 (0905). |
 | Test reads a repo file from disk (check order) | ✅ solid | Predicted pytest fails first if favicon.svg is deleted: the intent test compares served bytes with Path('favicon.svg') and runs before docker build. PR dashboard#117 (0905). |
 | URL resolution (absolute path vs the linking file's folder) | 🔵 open | The manifest sits under /assets/ but its start_url "/" is absolute, so the installed app opens the site root, not the assets folder. PR dashboard#119. [skip:0905] |
 | Committed artifact vs build-time rendering | 🔵 open | icon-192/512.png are committed files rendered by hand from favicon.svg; a redrawn SVG changes the tab icon but not the installed app's icon until someone re-renders. The 'who's holding an old copy' through-line. PR dashboard#119. [skip:0905] |
+| Shelling out from Python (`subprocess.run`) + parsing KEY=value files | 🔵 open | The collector asks git for a worktree HEAD with argv (no shell), a timeout, and check=True; the slot config is read line by line into a dict. ground-up chunk 8. PR dashboard#139. [revisit:0919] |
+| Regex as a config probe (`re.search` + `re.escape`) | 🔵 open | "Is this host routed?" is one regex over the Caddyfile text; the host is escaped so its dots mean dots. ground-up chunk 8. PR dashboard#139. [revisit:0919] |
 
 | Responsive graph layout | 🔵 open | Keep labels readable while fitting column gaps to available width; observe width changes to lay out again. [revisit:0906] |
 | Directional graph traversal | 🔵 open | Follow edges in one direction; keep a visited set to represent shared nodes and cycles as links. [revisit:0906] |
