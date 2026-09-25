@@ -1,78 +1,38 @@
-# queries.md — counting the learning ledger
+# queries.md: counting the ledger
 
-Every number about learning progress comes from `learning-log.md` by grep. There is no
-database, no rendered page, and no second copy: a count is derived on the spot, so it
-can be wrong only if the ledger is wrong.
-
-Run from the ledger repo root.
-
-## The tags
-
-Tags append to a row's Hook cell and are never rewritten.
-
-```
-| `export` | 🔶 refresh | "Let other files use this" [skip:0830] [skip:0907] |
-```
-
-| Tag | Meaning |
-|---|---|
-| `[applied:<repo> MMDD]` | used unaided in another repo — the transfer test |
-| `[skip:MMDD]` | a gate stop was declined |
-| `[revisit:MMDD]` | the agent wrote it; flagged to come back |
-
-`MMDD` is enough — the ledger's own timeline supplies the year.
-
-## Session-open line
-
-The `ground-up` skill runs these at session start and reports one line. Report it even
-when every count is zero; a silent counter reads the same as one that never ran.
+Every number comes from [ledger.md](ledger.md) by grep, run from this
+repo's root. Each recipe reads table rows only (lines starting `|`). A count is derived on the spot, so it is wrong only if the
+ledger is.
 
 ```bash
-# totals
-grep -o '\[skip:'    learning-log.md | wc -l
-grep -o '\[revisit:' learning-log.md | wc -l
-grep -o '\[applied:' learning-log.md | wc -l
+# held rows per repo (only the top table has a date in column 3)
+awk -F'|' '$4 ~ /20[0-9][0-9]-/ {gsub(/ /,"",$2); n[$2]++}
+  END {for (r in n) print n[r], r}' ledger.md
 
-# oldest unresolved tag
-grep -oE '\[(skip|revisit):[0-9]+\]' learning-log.md | sort -t: -k2 | head -1
+# rows waiting on a re-test
+awk '/^## Partial/{p=1} /^## Born/{p=0} p && /\[(partial|gap):/' ledger.md
+
+# rules used unaided in another repo: count, then the rows
+grep '^|' ledger.md | grep -o '\[applied:' | wc -l
+grep -E '^\|.*\[applied:' ledger.md
+
+# rules I added that nothing enforces yet
+awk -F'|' '/^## Born/{b=1} b && $4 ~ /not yet/' ledger.md
 ```
 
-## Rows that have earned a session
-
-Three tags of any kind on one row is the escalation line.
-
-```bash
-grep -E '(\[(skip|revisit):[0-9]+\][^|]*){3,}' learning-log.md
-```
-
-## What is blocking, most-dodged first
-
-```bash
-grep -E '\[(skip|revisit):' learning-log.md \
-  | awk -F'|' '{n=gsub(/\[(skip|revisit):/,""); print n, $2}' \
-  | sort -rn
-```
+Report a zero as a zero; a silent count reads the same as one that never
+ran.
 
 ## Drift check
 
-If skips outnumber the open chunks in the governed repo's `plan.md`, the gates are
-being declined faster than the work is being done. That is the single signal this
-counter exists to surface — say it out loud when it trips.
+The repos are private, so this is a procedure, not a script. For each
+repo named in the ledger, open that repo's `INVARIANTS.md`:
 
-```bash
-# skips: run from the ledger repo
-skips=$(grep -o '\[skip:' learning-log.md | wc -l)
-# chunks: run from the governed repo (plan.md is gitignored there)
-chunks=$(grep -c '^- \[ \]' plan.md)
-[ "$skips" -gt "$chunks" ] && echo "DRIFT: $skips skips vs $chunks open chunks"
-```
+1. Every held row here matches a row there, and its `held` date agrees.
+2. Every "born from the owner" row here is a row there, and its
+   enforced-by cell matches.
+3. `root` rows match the roots list in your private context instead.
 
-## Rules that keep the counts honest
-
-- **Append, never rewrite.** A tally that is edited in place can be dropped to zero or
-  double-counted; a row of appended tags cannot.
-- **A tag must name a concept row.** A skip that names no concept is not recorded, and
-  a stop that could not name one should not have fired.
-- **Never count tags out of PRs.** A PR's `revisit after <topics>` note is a message and
-  dies with the PR. If the ledger row was not written, the tag did not happen.
-- **No `|` inside a tag.** These live in markdown table cells.
+A row here with no match there is drift: the rule was dropped, reworded,
+or never landed. Fix the repo's file or reword the ledger row, then say
+which.

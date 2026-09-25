@@ -1,71 +1,70 @@
-# AGENTS.md — the ground-up learning system
+# AGENTS.md: the invariants method
 
-Agent context for this ledger repo. The human here is closing the gap between
-directing AI to build software and reading/owning code unaided; their own repos are
-the course material. [SYSTEM.md](SYSTEM.md) is the full map; this file is the
-grammar an agent needs loaded while working the system.
+Agent grammar for this repo and for any repo that runs the method. The
+user owns layer 2, the standing rules (invariants) an app's money and
+data must always obey, in their own words. [MODEL.md](MODEL.md) is the
+model; this file is what an agent does with it.
 
-**Rule zero: only unaided answers are evidence.** Assisted performance inflates what a
-learner appears to know. Nothing enters the ledger because the agent explained it or
-the user watched it happen — the user answers first, the agent corrects after. An
-explanation given before the user has guessed deletes the lesson.
+## Rule zero
 
-**A public ledger makes every commit a publication.** Learning evidence belongs here;
-employer detail, job material, and verbatim private code stay out (`inbox/` is
-gitignored for exactly that reason). When in doubt, it stays out.
+Only unaided answers are evidence. The user answers first; the agent
+corrects after. An explanation given before the user has guessed deletes
+the lesson. A rule enters the ledger because the user stated it cold,
+never because the agent explained it or the user watched it happen.
 
-## The ledger grammar
+## Three layers
 
-**Statuses** — one row per concept in [learning-log.md](learning-log.md):
-✅ **solid** (demonstrated unaided) · 🔶 **refresh** (taught once; re-test before
-calling it known) · 🔵 **open** (exercise assigned, unfinished).
+| layer | what | owner |
+|---|---|---|
+| 3 | what it should do for me | the user, by using the app |
+| 2 | what must always be true | the user states the rules; the agent keeps them executable |
+| 1 | how the code does it | the agent |
 
-**Grades** — every answer the user gives: `solid` (correct unaided → eligible for ✅)
-· `partial` (core idea present, a meaningful piece missing → 🔶) · `gap` (mental model
-wrong or absent → 🔶 with the missing foundation named in the row's hook).
+## The row in a repo's INVARIANTS.md
 
-**Tags** append to a row's Hook cell, newest last, and are never rewritten — a count
-is `grep -c`, so it cannot drift or double-increment. A tag never contains `|` (these
-live in table cells), and a tag must name a concept row: if the row wasn't written,
-the tag didn't happen (a note in a PR dies with the PR).
+One file per repo, tracked at the root, one row per rule:
+`rule | enforced by | born from | held`.
 
-| Tag | Written when |
-|---|---|
-| `[applied:<repo> MMDD]` | a logged concept used unaided in another repo — the transfer test |
-| `[skip:MMDD]` | a gate stop declined |
-| `[revisit:MMDD]` | the agent wrote the change at full speed; flagged to come back |
+- **rule**: the user's words. Reword only with the user.
+- **enforced by**: name the check, test or constraint, and its form:
+  `integrity/runtime check`, `test`, `schema constraint`, `doc only`,
+  `not yet`. `doc only` and `not yet` are todos.
+- **born from**: the issue or incident; `owner` when the user added it.
+- **held**: the date the user stated it unaided; blank until then.
 
-**Escalation:** three tags of any kind on one row, or a concept graded partial/gap
-twice, means it has earned a consolidation session on evidence, not mood — queue the
-matching external lesson in that repo's study plan. Lessons are a mine, not a march:
-prescribed per stuck concept, never walked linearly.
+The agent finds where each rule is enforced, makes it executable, and
+keeps the row current. One line in the repo's `AGENTS.md` sends every
+agent to the file before money or data-model work.
 
-## The files
+## The ledger row here
 
-| File | Role |
-|---|---|
-| [learning-log.md](learning-log.md) | The evidence ledger, all repos — single source of learning state |
-| [syllabus.md](syllabus.md) | Concept frontier per track; read when judging distance from the frontier |
-| [queries.md](queries.md) | Counting recipes for the tags — read it rather than composing greps |
-| `plan.md` in the governed repo (gitignored) | Study plan: layer map, chunk checklist, position. Its existence turns the gates on (format: `examples/plan.md`) |
-| `inbox/` (gitignored) | Captured confusion, one file per item — questions pending teaching, never completed concepts |
+[ledger.md](ledger.md): `repo | rule | held | tags`. `held` is
+`YYYY-MM-DD`; `repo` is `root` for a truth every app obeys. Tags append
+to the tags cell, newest last, never rewritten, never containing `|`:
+`[applied:<repo> MMDD]` (used unaided in another repo), `[partial:MMDD]`,
+`[gap:MMDD]`. A partial or gap row waits in the re-test table and moves
+up, tags and all, on the day of an unaided pass. If the row was not
+written, the tag did not happen. Counts: [queries.md](queries.md).
 
-## Working in a governed repo
+## Holding a rule
 
-A repo is governed when it has a study plan. Sessions there run the two learning
-gates — full mechanics in [skills/ground-up/SKILL.md](skills/ground-up/SKILL.md). The
-spine: **design freezes before the ledger is read** (the learner's level never sways
-design); Gate A judges the frozen design's distance from the frontier and decides who
-writes it; Gate B asks prediction questions at ship time, answered unaided before any
-explanation. Every stop is skippable — a skip becomes a tag, never a failure.
+Three checks, no app open:
 
-## Bookkeeping
+1. Say the rule in one sentence.
+2. Say what breaks if it is false.
+3. Say where it is enforced, or that it is not yet.
 
-- Teaching anything, in any session type: new concepts → 🔶, unaided demos → ✅,
-  unfinished exercises → 🔵. Study sessions re-test 🔶/🔵 before new material;
-  everyday gates grade only what the change touches.
-- Ledger commits go directly on the default branch (`git pull --rebase` first);
-  structural changes to the system get a branch and review.
-- Confusion surfacing mid-task → capture to `inbox/` and keep moving
-  ([skills/learning-inbox/SKILL.md](skills/learning-inbox/SKILL.md)); teaching happens
-  in a later session, which also does the tally.
+Three is held (a dated ledger row), two is partial, one is gap.
+
+## Three moves
+
+- **Invariants pass**: user writes rules from memory first; agent mines code, tests and docs; user grades each row Knew it / Makes sense / Disagree / Unclear; land `INVARIANTS.md` and ledger rows.
+- **Diagnosing-bugs tail**: after the diagnosis, ask the user for the rule the bug broke before explaining; grade it, name the class, add or mark the row, and give the fix an enforcement point.
+- **Ship gate**: ask which rule this change touches and whether it created one; new rows land in `INVARIANTS.md` in the same PR.
+
+## Public repo
+
+Every commit here is a publication. Write rule sentences only: what the
+user's own app must do. Private file paths, amounts, balances, tokens,
+employer or job material, and verbatim private code stay in private
+context or in `inbox/`, which is gitignored. When in doubt, it stays out.
