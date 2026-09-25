@@ -1,45 +1,86 @@
 # ground-up
 
-I built working software — a point-of-sale system, a trading bot, a server full of
-services — by directing AI. I can't yet read most of the code I own. This repo is the
-system my coding agents and I use to fix that, and the live evidence of how it's
-going.
+I build software by directing AI agents that write the code, and I
+can't read most of it. This repo is how I own it anyway: not by
+learning to read it, but by holding the rules its money and data must
+always obey.
 
-The idea: **my own repos are the curriculum.** Instead of working through a course and
-hoping it transfers, my agents teach me the code I already ship — and every everyday
-change they make becomes a small lesson at exactly my level.
+## Three layers
 
-Two rules make it honest:
+```
+3  what it should do for me
+   owner: me, by using it
+2  what must always be true
+   owner: me, as standing rules
+1  how the code does it
+   owner: the agent
+```
 
-- **Rule zero — only unaided answers count.** Nothing gets marked "known" because an
-  agent explained it or I watched it happen. I answer first; the agent corrects after.
-- **Design never bends for teaching.** The agent works out the best change first, and
-  only then decides whether I write it, predict it, or just watch it ship with a flag
-  to revisit.
+Layer 2 is the one nobody owned. A standing rule is a sentence about the
+app's data that must be true at every moment, no matter which feature
+just ran: "a refund lowers the category it came from and never counts
+as income." [MODEL.md](MODEL.md) is the full model.
 
-Everything runs on one ledger: [learning-log.md](learning-log.md) is my actual
-learning state, tracked concept by concept, in public. The gaps and stalls are in
-there too — that's the point.
+## The loop
+
+```
+use the app
+     |
+     v
+bug found
+     |
+     v
+I state the rule it broke, unaided
+     |
+     v
+agent makes it executable
+(check, test, or constraint)
+     |
+     v
+one ledger row
+```
+
+Only unaided answers count. If an agent explained the rule first, it
+goes on the re-test list, not the ledger.
+
+## What is here
+
+| file | what |
+|---|---|
+| [MODEL.md](MODEL.md) | what a standing rule is, how to spot one, how to know you hold one |
+| [ledger.md](ledger.md) | the rules I can state cold, across my repos |
+| [queries.md](queries.md) | counting recipes for the ledger |
+| `inbox/` | gitignored, local: questions caught mid-work |
+| [skills/](skills/) | the agent skill that runs an invariants pass (lands next) |
+| [AGENTS.md](AGENTS.md) | the grammar an agent loads to work the method |
 
 ## Use it yourself
 
-The whole system ships here, generalized so it isn't wired to my machines:
+1. Copy [MODEL.md](MODEL.md) and read it once.
+2. Run an invariants pass on the repo you most want to own. Write your
+   rules from memory first. Have an agent mine the code, tests and docs
+   for the rest. Grade every row: Knew it / Makes sense / Disagree /
+   Unclear. Put the result at the repo root as `INVARIANTS.md`, columns
+   `rule | enforced by | born from | held`.
+3. Add the diagnosing-bugs tail: every bug ends with you stating the
+   rule it broke, before the agent explains anything.
+4. Keep a ledger of the rows you can say cold. Point your agent at
+   [AGENTS.md](AGENTS.md).
 
-1. **Copy the repo** and start your ledger from [examples/](examples/) (a fabricated
-   ledger, syllabus, and study plan showing the format — my real ones live at the
-   repo root).
-2. **Install the skills** from [skills/](skills/) into your agent (Claude Code:
-   `~/.claude/skills/`) — the engine ([ground-up](skills/ground-up/SKILL.md)), plus
-   capture ([learning-inbox](skills/learning-inbox/SKILL.md)), Socratic coaching
-   ([code-coach](skills/code-coach/SKILL.md)), and resuming after a gap
-   ([fell-asleep](skills/fell-asleep/SKILL.md)).
-3. **Point your agent at it**: [AGENTS.md](AGENTS.md) is the grammar agents load; add
-   one line to your global agent context naming your ledger's path.
-4. **Say "ground-up"** in the repo you most want to be able to read. The agent surveys
-   it, writes a gitignored `plan.md` there, and from then on everyday work in that
-   repo runs the learning gates.
+## First pass
 
-How every part fits together — the gates, the tags, the ceremony — is in
-[SYSTEM.md](SYSTEM.md).
+A personal finance app, 2026-09-25:
 
-MIT licensed. If you try it, I'd genuinely like to hear how it goes.
+| | |
+|---|---|
+| rules on the list | 38 |
+| could say cold | 7 |
+| new and agreed | 29 |
+| disagreed | 0 |
+| reworded | 6 |
+| born from the owner | 2 |
+
+Zero disagreements means the rules were mine; seven says they were never
+in my head as rules.
+
+MIT licensed.
