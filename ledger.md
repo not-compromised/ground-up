@@ -12,11 +12,12 @@ short. Counting recipes: [queries.md](queries.md). `root` rows are the
 general truths every app obeys; the rest belong to one repo and match a
 row in its `INVARIANTS.md`.
 
-The first pass counted seven rules said cold; the failed-write rule came
-in after teaching, so it waits under re-test and six rows start here.
+Seven rows start here from the first pass. The failed-write rule, which
+came right only after teaching, waits under re-test.
 
 | repo | rule | held | tags |
 |---|---|---|---|
+| finance | A bill is paid once per cycle. | 2026-09-25 | |
 | finance | Cash on hand is your checking and savings balances plus money moving between your own accounts, and nothing else. | 2026-09-25 | |
 | finance | Card and loan balances are debts: they subtract from net worth and never count as spendable cash. | 2026-09-25 | |
 | finance | Transfers between your own accounts never count as spending or income. | 2026-09-25 | |
