@@ -23,7 +23,7 @@ came right only after teaching, waits under re-test.
 | finance | Transfers between your own accounts never count as spending or income. | 2026-09-25 | |
 | finance | A refund lowers spending in the category it came from and never counts as income. | 2026-09-25 | |
 | finance | Moving money between two of your own spendable accounts isn't spending, but paying a card always counts as money leaving. | 2026-09-25 | |
-| root | Money is stored as integers and divided only at display. The finance app does not comply yet. | 2026-09-25 | |
+| root | Money is stored as integers and divided only at display. The finance app does not comply yet. | 2026-09-25 | [applied:firepos 0930] |
 
 ## Partial and gap, re-test
 
@@ -44,3 +44,4 @@ Rules I added that no code or doc held before I said them.
 |---|---|---|---|
 | finance | An in-transit amount that never lands within its window is flagged, not silently dropped. | not yet | 2026-09-25 |
 | finance | Unlinking a bank never destroys its transaction history. | not yet, issue filed | 2026-09-25 |
+| firepos | Ten wrong override PINs lock the register; it stays locked for 15 minutes unless a manager key or owner key unlocks it. | not yet, issue filed | 2026-09-30 |
